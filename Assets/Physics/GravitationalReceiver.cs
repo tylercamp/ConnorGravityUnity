@@ -9,13 +9,13 @@ using System.Collections;
 
 public class GravitationalReceiver : MonoBehaviour
 {
-	public static float GravitationConstant = 10.0F;
+	public static float GravitationConstant = 5000.0F;
 
 	// Update is called once per frame
 	void Update()
 	{
 		NewtonianBody[] totalBodies = FindObjectsOfType(typeof(NewtonianBody)) as NewtonianBody[];
-        NewtonianBody myBody = GetComponent<NewtonianBody>();
+		NewtonianBody myBody = GetComponent<NewtonianBody>();
 
 		Vector3 forceVector;
 		foreach (NewtonianBody currentBody in totalBodies)
@@ -27,7 +27,7 @@ public class GravitationalReceiver : MonoBehaviour
 			if (distanceSquared <= float.Epsilon)
 				continue;
 
-            float factor = (myBody.Mass + currentBody.Mass) / (distanceSquared * GravitationConstant);
+			float factor = (myBody.Mass + currentBody.Mass) / (distanceSquared) * GravitationConstant;
 
 			gameObject.rigidbody.AddForce(forceVector.normalized * factor);
 		}

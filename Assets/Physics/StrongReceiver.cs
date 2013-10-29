@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StrongReceiver : MonoBehaviour {
 
-	public static float StrongConstant = 40.0F;
+	public static float StrongConstant = 10.0F;
 
 	public float StrongAttraction = 1.0F;
 	public float StrongRamp = 3.0F;
@@ -23,7 +23,7 @@ public class StrongReceiver : MonoBehaviour {
 			if (distanceNth <= float.Epsilon)
 				continue;
 
-			float factor = (myBody.Mass + currentBody.Mass) / distanceNth;
+			float factor = (myBody.Mass + currentBody.Mass) / distanceNth * StrongConstant;
 
 			gameObject.rigidbody.AddForce(forceVector.normalized * factor);
 		}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WASDMoveFreeCamera : MonoBehaviour
 {
-
+	public float RunFactor = 4.0F;
 	public float MovementsPerSecond = 5.0F;
 	
 	// Update is called once per frame
@@ -27,6 +27,8 @@ public class WASDMoveFreeCamera : MonoBehaviour
 		if (Input.GetKey(KeyCode.X))
 			movementVector.y += MovementsPerSecond * Time.deltaTime;
 
+		if (Input.GetKey(KeyCode.LeftShift))
+			movementVector *= RunFactor;
 		camera.transform.position += movementVector;
 	}
 }
